@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     private Transform _heldObject = null;
     private float _heldObjectDistance;
     private Quaternion _heldObjectRotationOffset;
+    private float _heldObjectYPosition;
 
     public int ballsCollected;
 
@@ -72,6 +73,7 @@ public class Player : MonoBehaviour
                     _heldObject = hit.transform;
                     _heldObjectDistance = Vector3.Distance(playerCamera.transform.position, _heldObject.position);
                     _heldObjectRotationOffset = Quaternion.Inverse(transform.rotation) * _heldObject.rotation;
+                    _heldObjectYPosition = _heldObject.position.y;
                 }
             }
         }
@@ -86,7 +88,9 @@ public class Player : MonoBehaviour
         if (_heldObject != null)
         {
             Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
-            _heldObject.position = ray.GetPoint(_heldObjectDistance);
+            Vector3 newPosition = ray.GetPoint(_heldObjectDistance);
+            newPosition.y = _heldObjectYPosition;
+            _heldObject.position = newPosition;
 
             _heldObject.rotation = transform.rotation * _heldObjectRotationOffset;
         }
