@@ -17,9 +17,7 @@ public class Player : MonoBehaviour
     private CharacterController _characterController;
     private Vector3 _cameraVelocity = Vector3.zero;
     private Transform _heldObject = null;
-    private float _heldObjectDistance;
     private Quaternion _heldObjectRotationOffset;
-    private float _heldObjectYPosition;
 
     public int ballsCollected;
 
@@ -71,9 +69,7 @@ public class Player : MonoBehaviour
                 else if (hit.collider.CompareTag("Pickable"))
                 {
                     _heldObject = hit.transform;
-                    _heldObjectDistance = Vector3.Distance(playerCamera.transform.position, _heldObject.position);
                     _heldObjectRotationOffset = Quaternion.Inverse(transform.rotation) * _heldObject.rotation;
-                    _heldObjectYPosition = _heldObject.position.y;
                 }
             }
         }
@@ -87,10 +83,14 @@ public class Player : MonoBehaviour
     {
         if (_heldObject != null)
         {
+            Plane plane = new Plane(Vector3.up, Vector3.up);
             Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
-            Vector3 newPosition = ray.GetPoint(_heldObjectDistance);
-            newPosition.y = _heldObjectYPosition;
-            _heldObject.position = newPosition;
+
+            if (plane.Raycast(ray, out float distance))
+            {
+                Vector3 newPosition = ray.GetPoint(distance);
+                _heldObject.position = newPosition;
+            }
 
             _heldObject.rotation = transform.rotation * _heldObjectRotationOffset;
         }
