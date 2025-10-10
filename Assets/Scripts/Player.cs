@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
     public float moveSpeed = 8f;
-    
+
     public Camera playerCamera;
     [Range(0.01f, 1f)]
     public float cameraPositionSmoothTime = 0.1f;
@@ -14,6 +16,13 @@ public class Player : MonoBehaviour
 
     private CharacterController _characterController;
     private Vector3 _cameraVelocity = Vector3.zero;
+    private Transform _heldObject = null;
+    private float _heldObjectDistance;
+    private Quaternion _heldObjectRotationOffset;
+
+    public int ballsCollected;
+
+    public TMP_Text ballText;
 
     void Start()
     {
@@ -27,6 +36,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         HandleMovement();
+        HandleHeldObject();
         HandleInteraction();
     }
 
@@ -45,18 +55,40 @@ public class Player : MonoBehaviour
 
     private void HandleInteraction()
     {
-        if (!Input.GetMouseButtonDown(0)) return;
-
-        Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit))
+        if (Input.GetMouseButtonDown(0) && _heldObject == null)
         {
-            if (hit.collider.CompareTag("Door") && Vector3.Distance(transform.position, hit.transform.position) <= interactionDistance)
+            Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, interactionDistance))
             {
-                Door door = hit.collider.GetComponent<Door>();
-                if (door != null) door.ToggleDoor();
+                if (hit.collider.CompareTag("Door"))
+                {
+                    Door door = hit.collider.GetComponent<Door>();
+                    if (door != null) door.ToggleDoor();
+                }
+                else if (hit.collider.CompareTag("Pickable"))
+                {
+                    _heldObject = hit.transform;
+                    _heldObjectDistance = Vector3.Distance(playerCamera.transform.position, _heldObject.position);
+                    _heldObjectRotationOffset = Quaternion.Inverse(transform.rotation) * _heldObject.rotation;
+                }
             }
+        }
+        else if (Input.GetMouseButtonUp(0) && _heldObject != null)
+        {
+            _heldObject = null;
+        }
+    }
+
+    private void HandleHeldObject()
+    {
+        if (_heldObject != null)
+        {
+            Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+            _heldObject.position = ray.GetPoint(_heldObjectDistance);
+
+            _heldObject.rotation = transform.rotation * _heldObjectRotationOffset;
         }
     }
 
@@ -64,11 +96,26 @@ public class Player : MonoBehaviour
     {
         if (playerCamera == null) return;
 
-        Vector3 desiredPosition = transform.position + cameraOffset; 
+        Vector3 desiredPosition = transform.position + cameraOffset;
         Vector3 smoothedPosition = Vector3.SmoothDamp(playerCamera.transform.position, desiredPosition, ref _cameraVelocity, cameraPositionSmoothTime);
         playerCamera.transform.position = smoothedPosition;
 
         Quaternion targetRotation = Quaternion.LookRotation(transform.position - playerCamera.transform.position);
         playerCamera.transform.rotation = Quaternion.Slerp(playerCamera.transform.rotation, targetRotation, cameraRotationSmoothTime * Time.deltaTime);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Ball"))
+        {
+            ballsCollected++;
+            Destroy(other.gameObject);
+            ballText.text = "Balls: " + ballsCollected;
+        }
+
+        if (ballsCollected >= 5)
+        {
+            SceneManager.LoadScene("1");  
+        }
     }
 }

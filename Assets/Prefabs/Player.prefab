@@ -326,6 +326,6 @@ MonoBehaviour:
   moveSpeed: 8
   playerCamera: {fileID: 7185582315783718710}
   cameraPositionSmoothTime: 0.1
-  cameraRotationSmoothTime: 0.5
+  cameraRotationSmoothTime: 3
   cameraOffset: {x: 0, y: 5, z: -10}
   interactionDistance: 100
