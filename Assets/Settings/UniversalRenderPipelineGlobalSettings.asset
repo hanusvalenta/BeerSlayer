@@ -64,6 +64,7 @@ MonoBehaviour:
       - rid: 2078362058307665926
       - rid: 2078362058307665927
       - rid: 2078362058307665928
+      - rid: 2078362058954375168
     m_RuntimeSettings:
       m_List: []
   m_AssetVersion: 9
@@ -198,6 +199,11 @@ MonoBehaviour:
           - {r: 0.8, g: 1, b: 0.8, a: 1}
           - {r: 0.2, g: 0.4, b: 0.2, a: 1}
           - {r: 0.125, g: 0.22, b: 0.36, a: 1}
+    - rid: 2078362058954375168
+      type: {class: OnTilePostProcessResource, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.Runtime}
+      data:
+        m_Version: 0
+        m_UberPostShader: {fileID: 4800000, guid: fe4f13c1004a07d4ea1e30bfd0326d9e, type: 3}
     - rid: 7652533108471496773
       type: {class: UniversalRenderPipelineEditorMaterials, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.Runtime}
       data:
@@ -255,8 +261,6 @@ MonoBehaviour:
         m_DefaultUnlitMaterial: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
         m_DefaultMaskMaterial: {fileID: 2100000, guid: 15d0c3709176029428a0da2f8cecf0b5, type: 2}
         m_DefaultMesh2DLitMaterial: {fileID: 2100000, guid: 9452ae1262a74094f8a68013fbcd1834, type: 2}
-        m_DefaultRenderAs2DMaterial: {fileID: 2100000, guid: b697f6a938056384e968ccf6527dac83, type: 2}
-        m_RenderAs2DFlatteningShader: {fileID: 4800000, guid: 74659692f6350ba46b88180d9c826630, type: 3}
     - rid: 7652533108471496780
       type: {class: UniversalRenderPipelineRuntimeTextures, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.Runtime}
       data:

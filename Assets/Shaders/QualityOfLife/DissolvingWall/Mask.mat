@@ -56,7 +56,7 @@ Material:
     - _Radius: 0.64
     m_Colors:
     - _EdgeColor: {r: 1, g: 0.5, b: 0, a: 1}
-    - _PlayerPos: {r: 8.529508, g: 0.8909884, b: -19.480488, a: 0}
+    - _PlayerPos: {r: -2.840423, g: 0.89098847, b: -4.0272183, a: 0}
     - _PlayerWorldPos: {r: 13.76405, g: 0.8909885, b: 4.125131, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
