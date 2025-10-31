@@ -19,9 +19,9 @@ public class Player : MonoBehaviour
     private Transform _heldObject = null;
     private Quaternion _heldObjectRotationOffset;
 
-    public int ballsCollected;
-
     public TMP_Text ballText;
+
+    public bool[] roomsUnlocked = new bool[3];
 
     void Start()
     {
@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
                 if (hit.collider.CompareTag("Door"))
                 {
                     Door door = hit.collider.GetComponent<Door>();
-                    if (door != null) door.ToggleDoor();
+                    if (door != null && roomsUnlocked[door.DoorID]) door.ToggleDoor();
                 }
                 else if (hit.collider.CompareTag("Pickable"))
                 {
@@ -112,14 +112,9 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("Ball"))
         {
-            ballsCollected++;
             Destroy(other.gameObject);
-            ballText.text = "Balls: " + ballsCollected;
-        }
 
-        if (ballsCollected >= 5)
-        {
-            SceneManager.LoadScene("1");  
+            roomsUnlocked[other.GetComponent<Ball>().ballID] = true;
         }
     }
 }

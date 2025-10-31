@@ -6,6 +6,8 @@ public class Door : MonoBehaviour
     public float OpenSpeed = 2f;
     public bool IsOpen = false;
 
+    public int DoorID;
+
     private Quaternion _closedRotation;
     private Quaternion _openRotation;
 
