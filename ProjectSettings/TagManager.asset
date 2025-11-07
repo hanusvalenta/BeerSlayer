@@ -7,6 +7,7 @@ TagManager:
   - Door
   - Pickable
   - Ball
+  - Drawer
   layers:
   - Default
   - TransparentFX

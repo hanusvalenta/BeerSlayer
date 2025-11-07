@@ -66,6 +66,11 @@ public class Player : MonoBehaviour
                     Door door = hit.collider.GetComponent<Door>();
                     if (door != null && roomsUnlocked[door.DoorID]) door.ToggleDoor();
                 }
+                if (hit.collider.CompareTag("Drawer"))
+                {
+                    Drawer drawer = hit.collider.GetComponent<Drawer>();
+                    if (drawer != null && roomsUnlocked[drawer.DoorID]) drawer.ToggleDoor();
+                }
                 else if (hit.collider.CompareTag("Pickable"))
                 {
                     _heldObject = hit.transform;
