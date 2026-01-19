@@ -8,6 +8,7 @@ TagManager:
   - Pickable
   - Ball
   - Drawer
+  - Target
   layers:
   - Default
   - TransparentFX

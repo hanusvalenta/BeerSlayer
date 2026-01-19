@@ -63,19 +63,33 @@ public class Player : MonoBehaviour
             {
                 if (hit.collider.CompareTag("Door"))
                 {
+                    Debug.Log("Ray hit " + hit.transform.name);
                     Door door = hit.collider.GetComponent<Door>();
                     if (door != null && roomsUnlocked[door.DoorID]) door.ToggleDoor();
                 }
                 if (hit.collider.CompareTag("Drawer"))
                 {
+                    Debug.Log("Ray hit " + hit.transform.name);
                     Drawer drawer = hit.collider.GetComponent<Drawer>();
                     if (drawer != null && roomsUnlocked[drawer.DoorID]) drawer.ToggleDoor();
                 }
-                else if (hit.collider.CompareTag("Pickable"))
+                if (hit.collider.CompareTag("Pickable"))
                 {
+                    Debug.Log("Ray hit " + hit.transform.name);
                     _heldObject = hit.transform;
                     _heldObjectRotationOffset = Quaternion.Inverse(transform.rotation) * _heldObject.rotation;
                 }
+                if (hit.collider.CompareTag("Target"))
+                {
+                    Debug.Log("Ray hit " + hit.transform.name);
+                    Target target = hit.collider.GetComponent<Target>();
+                    target.ToggleTarget();
+                }
+                else
+                {
+                    Debug.Log("Ray hit nothing (" + hit.transform.name + ")");
+                }
+                
             }
         }
         else if (Input.GetMouseButtonUp(0) && _heldObject != null)

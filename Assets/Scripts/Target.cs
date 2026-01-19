@@ -14,10 +14,10 @@ public class Target : MonoBehaviour
     private void Start()
     {
         _closedRotation = transform.localRotation;
-        _openRotation = _closedRotation * Quaternion.Euler(0, OpenAngle, 0);
+        _openRotation = _closedRotation * Quaternion.Euler(OpenAngle, 0, 0);
     }
 
-    public void ToggleDoor()
+    public void ToggleTarget()
     {
         IsOpen = !IsOpen;
     }
