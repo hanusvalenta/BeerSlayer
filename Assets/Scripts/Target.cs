@@ -17,7 +17,7 @@ public class Target : MonoBehaviour
         _openRotation = _closedRotation * Quaternion.Euler(OpenAngle, 0, 0);
     }
 
-    public void ToggleTarget()
+    public virtual void ToggleTarget(bool isPlayer)
     {
         IsOpen = !IsOpen;
     }

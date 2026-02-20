@@ -570,9 +570,9 @@ GameObject:
   - component: {fileID: 314422553}
   - component: {fileID: 314422552}
   - component: {fileID: 314422551}
+  - component: {fileID: 314422554}
   - component: {fileID: 314422555}
   - component: {fileID: 314422556}
-  - component: {fileID: 314422557}
   m_Layer: 0
   m_Name: pivot (3)
   m_TagString: Target
@@ -653,6 +653,22 @@ Transform:
   - {fileID: 1954300475648380572}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &314422554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314422549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d461ab47b372e414a94bfb7a0c0ff899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Target
+  OpenAngle: -90
+  OpenSpeed: 2
+  IsOpen: 0
+  DoorID: 3
 --- !u!65 &314422555
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -701,23 +717,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &314422557
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 314422549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9d207f6b019df1339822d59bedf7bb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TargetDelayed
-  OpenAngle: -90
-  OpenSpeed: 2
-  IsOpen: 0
-  DoorID: 0
-  clicked: 0
 --- !u!1 &339076923
 GameObject:
   m_ObjectHideFlags: 0
@@ -1495,10 +1494,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0eb57c35515120a8aadc3a25c0828ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Target3
-  OpenAngle: -90
+  OpenAngle: 90
   OpenSpeed: 2
   IsOpen: 0
-  DoorID: 0
+  DoorID: 1
   clicked: 0
 --- !u!1 &655421906
 GameObject:
@@ -1674,10 +1673,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game
   targets:
-  - {fileID: 1785548909}
-  - {fileID: 609284126}
-  - {fileID: 1788333146}
-  - {fileID: 314422557}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 1788333143}
+  - {fileID: 314422554}
 --- !u!1 &736940530
 GameObject:
   m_ObjectHideFlags: 0
@@ -3240,7 +3239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0eb57c35515120a8aadc3a25c0828ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Target3
-  OpenAngle: -90
+  OpenAngle: 90
   OpenSpeed: 2
   IsOpen: 0
   DoorID: 0
@@ -3256,9 +3255,9 @@ GameObject:
   - component: {fileID: 1788333142}
   - component: {fileID: 1788333141}
   - component: {fileID: 1788333140}
+  - component: {fileID: 1788333143}
   - component: {fileID: 1788333144}
   - component: {fileID: 1788333145}
-  - component: {fileID: 1788333146}
   m_Layer: 0
   m_Name: pivot (2)
   m_TagString: Target
@@ -3339,6 +3338,22 @@ Transform:
   - {fileID: 2568375}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &1788333143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788333138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d461ab47b372e414a94bfb7a0c0ff899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Target
+  OpenAngle: -90
+  OpenSpeed: 2
+  IsOpen: 0
+  DoorID: 2
 --- !u!65 &1788333144
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3387,23 +3402,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1788333146
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1788333138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9d207f6b019df1339822d59bedf7bb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TargetDelayed
-  OpenAngle: -90
-  OpenSpeed: 2
-  IsOpen: 0
-  DoorID: 0
-  clicked: 0
 --- !u!1 &1805058899
 GameObject:
   m_ObjectHideFlags: 0

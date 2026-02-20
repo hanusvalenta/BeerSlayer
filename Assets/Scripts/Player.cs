@@ -83,7 +83,7 @@ public class Player : MonoBehaviour
                 {
                     Debug.Log("Ray hit " + hit.transform.name);
                     Target target = hit.collider.GetComponent<Target>();
-                    target.ToggleTarget();
+                    target.ToggleTarget(true);
                 }
                 else
                 {

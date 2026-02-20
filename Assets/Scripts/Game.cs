@@ -36,6 +36,6 @@ public class Game : MonoBehaviour
     {
         int targetIndex = Random.Range(0, targets.Length);
 
-        targets[targetIndex].ToggleTarget();
+        targets[targetIndex].ToggleTarget(false);
     }
 }
